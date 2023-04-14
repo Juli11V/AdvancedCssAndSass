@@ -3,7 +3,12 @@
   "version": "1.0.0",
   "description": "Landing page for trillo",
   "main": "index.js",
-  "scripts": {},
+  "scripts": {
+    "compile:sass": "node-sass css/main.scss css/style.comp.css",
+    "prefix:css": "postcss --use autoprefixer -b 'last 10 versions' css/style.comp.css -o css/style.prefix.css",
+    "compress:css": "node-sass css/style.prefix.css css/style.css --output-style compressed",
+    "build:css": "npm-run-all compile:sass prefix:css compress:css"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/Juli11V/AdvancedCssAndSass.git"
@@ -15,6 +20,12 @@
   },
   "homepage": "https://github.com/Juli11V/AdvancedCssAndSass#readme",
   "devDependencies": {
-    "node-sass": "^8.0.0"
+    "node-sass": "^8.0.0",
+    "postcss-cli": "^10.1.0"
+  },
+  "dependencies": {
+    "autoprefixer": "^10.4.14",
+    "npm-run-all": "^4.1.5",
+    "postcss": "^8.4.21"
   }
 }
